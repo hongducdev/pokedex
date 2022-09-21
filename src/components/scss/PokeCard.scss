@@ -1,0 +1,138 @@
+@use '../../scss/' as *;
+
+.pokelist__card {
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.pokelist__card:hover {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.pokelist__card-img {
+    width: 30%;
+    position: absolute;
+    top: -10%;
+    left: 60%;
+    transition: all 0.3s ease-in-out;
+}
+
+.pokelist__card:hover .pokelist__card-img {
+    transform: scale(1.4);
+}
+
+.pokelist__card-info {
+    padding: 10px;
+}
+
+.pokelist__card-name {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.pokelist__card-id {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    opacity: 0.5;
+}
+
+.pokelist__card-type {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.pokelist__card-type .type {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin-right: 5px;
+    text-transform: capitalize;
+}
+
+.pokelist__card-type .type-bug {
+    background-color: $bug;
+}
+
+.pokelist__card-type .type-dark {
+    background-color: $dark;
+}
+
+.pokelist__card-type .type-dragon {
+    background-color: $dragon;
+}
+
+.pokelist__card-type .type-electric {
+    background-color: $electric;
+}
+
+.pokelist__card-type .type-fairy {
+    background-color: $fairy;
+}
+
+.pokelist__card-type .type-fighting {
+    background-color: $fighting;
+}
+
+.pokelist__card-type .type-fire {
+    background-color: $fire;
+}
+
+.pokelist__card-type .type-flying {
+    background-color: $flying;
+}
+
+.pokelist__card-type .type-ghost {
+    background-color: $ghost;
+}
+
+.pokelist__card-type .type-grass {
+    background-color: $grass;
+}
+
+.pokelist__card-type .type-ground {
+    background-color: $ground;
+}
+
+.pokelist__card-type .type-ice {
+    background-color: $ice;
+}
+
+.pokelist__card-type .type-normal {
+    background-color: $normal;
+}
+
+.pokelist__card-type .type-poison {
+    background-color: $poison;
+}
+
+.pokelist__card-type .type-psychic {
+    background-color: $psychic;
+}
+
+.pokelist__card-type .type-rock {
+    background-color: $rock;
+}
+
+.pokelist__card-type .type-steel {
+    background-color: $steel;
+}
+
+.pokelist__card-type .type-water {
+    background-color: $water;
+}
+
+.pokelist__card-type .type-shadow {
+    background-color: $shadow;
+}
+
+.pokelist__card-type .type-unknown {
+    background-color: $unknown;
+}

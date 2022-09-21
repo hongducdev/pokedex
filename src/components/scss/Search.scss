@@ -1,0 +1,32 @@
+@use '../../scss/' as *;
+
+.search__container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.search__input {
+    background-color: white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 11px;
+    border: none;
+    padding: 20px 30px;
+    width: 50vw;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.search__btn {
+    color: black;
+    border: none;
+    border-radius: 11px;
+    padding: 20px 30px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-left: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    cursor: pointer;
+}

@@ -1,0 +1,226 @@
+@use '../../scss/' as *;
+
+.pokepreview__container {
+    width: 30vw;
+    height: 70vh;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.pokepreview__card {
+    width: 30vw;
+}
+
+.pokepreview__card__image img {
+    padding-top: 20px;
+    width: 200px;
+    max-height: 200px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    margin: 0 auto;
+}
+
+.pokepreview__card__info {
+    padding: 20px;
+    text-align: center;
+}
+
+.pokepreview__card__info h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 5px;
+    margin-bottom: 10px;
+}
+
+.pokepreview__card__info p {
+    margin: 0;
+}
+
+.pokepreview__card__info p span {
+    font-weight: bold;
+}
+
+.pokepreview__card__height-weight {
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+    margin-top: 30px;
+
+}
+
+.pokepreview__card__height-title,
+.pokepreview__card__weight-title {
+    font-weight: 600;
+    font-size: 1rem;
+    padding-bottom: 10px;
+}
+
+.bg__property {
+    background-color: #f6f8fc;
+    padding: 5px 30px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    margin: 0 10px;
+}
+
+.pokepreview__card__text--bold {
+    font-weight: 600;
+    font-size: 1.2rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.pokepreview__card__stat__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.pokepreview__card__stat__item {
+    max-width: 35px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f6f8fc;
+    padding: 5px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    margin: 0 10px;
+    color: black;
+}
+
+.stat__item {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hp {
+    background-color: #ff5959;
+}
+
+.attack {
+    background-color: #ff994d;
+}
+
+.defense {
+    background-color: #eecd3d;
+}
+
+.sp__attack {
+    background-color: #a8e063;
+}
+
+.sp__defense {
+    background-color: #69c;
+}
+
+.speed {
+    background-color: #f49ac2;
+}
+
+.hp__value,
+.attack__value,
+.defense__value,
+.sp__attack__value,
+.sp__defense__value,
+.speed__value {
+    color: black;
+}
+
+.type {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin-right: 5px;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+
+.type-bug {
+    background-color: $bug;
+}
+
+.type-dark {
+    background-color: $dark;
+}
+
+.type-dragon {
+    background-color: $dragon;
+}
+
+.type-electric {
+    background-color: $electric;
+}
+
+.type-fairy {
+    background-color: $fairy;
+}
+
+.type-fighting {
+    background-color: $fighting;
+}
+
+.type-fire {
+    background-color: $fire;
+}
+
+.type-flying {
+    background-color: $flying;
+}
+
+.type-ghost {
+    background-color: $ghost;
+}
+
+.type-grass {
+    background-color: $grass;
+}
+
+.type-ground {
+    background-color: $ground;
+}
+
+.type-ice {
+    background-color: $ice;
+}
+
+.type-normal {
+    background-color: $normal;
+}
+
+.type-poison {
+    background-color: $poison;
+}
+
+.type-psychic {
+    background-color: $psychic;
+}
+
+.type-rock {
+    background-color: $rock;
+}
+
+.type-steel {
+    background-color: $steel;
+}
+
+.type-water {
+    background-color: $water;
+}
+
+.type-shadow {
+    background-color: $shadow;
+}
+
+.type-unknown {
+    background-color: $unknown;
+}
