@@ -3,21 +3,17 @@
 .pokelist__container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-}
-
-.pokelist__content {
-    margin-top: 40px;
-    display: flex;
-    flex-wrap: wrap;
-    width: 60vw;
-    padding: 0 20px;
+    grid-gap: 20px;
+    width: 90vw;
+    margin: 0 auto;
 }
 
 .pokelist__grid {
+    margin-top: 40px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-gap: 20px;
-    width: 100%;
+    width: 60vw;
 }
 
 .pokelist__pagination {
