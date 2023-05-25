@@ -1,6 +1,5 @@
 import { PokemonListResponse } from "../types";
 import axiosConfig from "./axiosConfig";
-import { AxiosPromise } from "axios";
 
 const getPokemonList = async (limit: number, offset: number) => {
   const response = await axiosConfig.get<PokemonListResponse>(

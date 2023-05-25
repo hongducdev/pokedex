@@ -1,5 +1,5 @@
 import React from "react";
-import { getEvolutions, getPokemonSpecies } from "../api/pokemonServices";
+import { getPokemonSpecies } from "../api/pokemonServices";
 import apiConfig from "../api/apiConfig";
 import { EvolutionData } from "../types";
 import axios from "axios";

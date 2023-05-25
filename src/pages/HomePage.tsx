@@ -2,13 +2,12 @@ import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import { PokemonList } from "../types";
 import { getPokemonList } from "../api/pokemonServices";
-import apiConfig from "../api/apiConfig";
 import PokemonCard from "../components/PokemonCard";
 
 const HomePage = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
-  const [limit, setLimit] = useState<number>(20);
+  const limit = 20;
   const [offset, setOffset] = useState<number>(0);
   const [pokemonList, setPokemonList] = useState<PokemonList[]>([]);
 
