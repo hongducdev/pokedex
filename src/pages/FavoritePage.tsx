@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import PokemonCard from "../components/PokemonCard";
+import Loading from "../components/Loading";
 
 const FavoritePage = () => {
   const [pokemonList, setPokemonList] = useState<string[]>([]);
@@ -35,7 +36,11 @@ const FavoritePage = () => {
           </span>
         </div>
       </div>
-      {loading && <div className="text-center">Loading...</div>}
+      {loading && (
+        <div className="text-center">
+          <Loading />
+        </div>
+      )}
       {error && <div className="text-center">Error...</div>}
       {!loading && !error && (
         <div className="w-full px-10">

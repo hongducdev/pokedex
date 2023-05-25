@@ -33,7 +33,7 @@ const PokemonCard = ({ name }: PokemonCardProps) => {
   return (
     <>
       <Link to={`/pokemon/${name}`}>
-        <div className="text-black shadow-sdprimary dark:shadow-none rounded-xl dark:bg-zinc-900 group hover:-translate-y-3 hover:ease-in-out hover:duration-300">
+        <div className="text-black rounded-xl dark:bg-zinc-900 bg-gray-100 group hover:-translate-y-3 hover:ease-in-out hover:duration-300">
           <div className="flex items-center justify-center">
             <img
               src={pokemon?.sprites.front_default}

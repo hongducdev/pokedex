@@ -6,6 +6,7 @@ import apiConfig from "../api/apiConfig";
 import StatTag from "../components/StatTag";
 import EvolutionCard from "../components/EvolutionCard";
 import TypeTag from "../components/TypeTag";
+import Loading from "../components/Loading";
 
 interface Pokemon {
   id: number | undefined;
@@ -84,7 +85,11 @@ const PokemonPage = () => {
   return (
     <div className="dark:bg-black bg-white relative max-w-screen min-h-screen">
       <Header />
-      {loading && <div className="text-center">Loading...</div>}
+      {loading && (
+        <div className="text-center">
+          <Loading />
+        </div>
+      )}
       {error && <div className="text-center">Error...</div>}
       {!loading && !error && (
         <div className="w-full mx-auto px-10">

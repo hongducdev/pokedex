@@ -42,7 +42,7 @@ const Header = () => {
             )}
           </div>
           <div className="h-full w-full rounded-md bg-gradient-to-r from-primary to-secondary p-1">
-            <Link to="/about">
+            <Link to="https://github.com/hongduccodedao/pokedex">
               <RiGithubLine className="text-white text-2xl" />
             </Link>
           </div>
