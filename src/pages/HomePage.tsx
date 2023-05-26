@@ -1,20 +1,32 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, ChangeEvent } from "react";
 import { PokemonList } from "../types";
 import { getPokemonList } from "../api/pokemonServices";
 import PokemonCard from "../components/PokemonCard";
 import Loading from "../components/Loading";
+import { BiSearchAlt } from "react-icons/bi";
+import { debounce } from "lodash";
 
-const HomePage = () => {
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<boolean>(false);
+const HomePage: React.FC = () => {
   const limit = 20;
   const [offset, setOffset] = useState<number>(0);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
   const [pokemonList, setPokemonList] = useState<PokemonList[]>([]);
+  const [search, setSearch] = useState<string>("");
 
-  useEffect(() => {
-    const fetchPokemonList = async () => {
+  const debouncedSearch = useCallback(
+    debounce((value: string) => {
+      setSearch(value);
+    }, 500),
+    []
+  );
+
+  const fetchPokemonList = useCallback(
+    async (limit: number, offset: number) => {
       try {
         setLoading(true);
+        setError(false);
+
         const response = await getPokemonList(limit, offset);
         setPokemonList(response.data.results);
         setLoading(false);
@@ -22,30 +34,62 @@ const HomePage = () => {
         setError(true);
         setLoading(false);
       }
-    };
+    },
+    []
+  );
 
-    fetchPokemonList();
-  }, [offset, limit]);
+  const fetchFilteredPokemonList = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(false);
+
+      const response = await getPokemonList(1281, 0);
+      const filteredPokemon = response.data.results.filter((pokemon) =>
+        pokemon.name.includes(search.toLowerCase())
+      );
+
+      setPokemonList(filteredPokemon);
+      setLoading(false);
+    } catch (error) {
+      setError(true);
+      setLoading(false);
+    }
+  }, [search]);
+
+  useEffect(() => {
+    fetchPokemonList(limit, offset);
+  }, [offset, limit, fetchPokemonList]);
+
+  useEffect(() => {
+    debouncedSearch(search);
+  }, [search, debouncedSearch]);
+
+  useEffect(() => {
+    if (search !== "") {
+      fetchFilteredPokemonList();
+    } else {
+      fetchPokemonList(limit, offset);
+    }
+  }, [search, fetchFilteredPokemonList, fetchPokemonList, limit, offset]);
 
   const handleNextClick = () => {
-    setOffset((prevOffset) => prevOffset + limit);
+    setOffset((prevOffset: number) => prevOffset + limit);
   };
 
   const handlePrevClick = () => {
     if (offset === 0) return;
-
-    setOffset((prevOffset) => prevOffset - limit);
+    setOffset((prevOffset: number) => prevOffset - limit);
   };
 
   return (
     <div>
       {loading && (
-        <div className="w-full min-h-screen flex items-center justify-center">
+        <div className="w-full h-[50vh] flex items-center justify-center">
           <Loading />
         </div>
       )}
       {error && (
-        <div className="w-full min-h-screen flex items-center justify-center">
+        <div className="w-full h-[50vh] flex items-center justify-center">
           Error...
         </div>
       )}
@@ -55,6 +99,20 @@ const HomePage = () => {
             <span className="text-transparent bg-gradient-to-r from-ctp-blue to-ctp-pink text-7xl font-bold bg-clip-text">
               PokéDex!
             </span>
+          </div>
+          <div className="flex items-center justify-end gap-3 my-5">
+            <input
+              type="text"
+              className="h-10 px-4 rounded-lg bg-gradient-to-r from-ctp-mantle to-ctp-crust border-none outline-none text-ctp-rust dark:text-white max-w-[400px] w-full"
+              placeholder="Search pokemon..."
+              value={search}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setSearch(e.target.value)
+              }
+            />
+            <button className="bg-gradient-to-r from-ctp-pink to-ctp-mauve w-10 h-10 text-xl text-white flex items-center justify-center rounded-lg">
+              <BiSearchAlt />
+            </button>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
             {pokemonList.map((pokemon) => (
