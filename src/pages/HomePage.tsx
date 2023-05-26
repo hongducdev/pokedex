@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Header from "../components/Header";
 import { PokemonList } from "../types";
 import { getPokemonList } from "../api/pokemonServices";
 import PokemonCard from "../components/PokemonCard";
