@@ -27,11 +27,11 @@ const FavoritePage = () => {
   }, []);
 
   return (
-    <div className="dark:bg-black bg-white relative max-w-screen min-h-screen">
+    <div className="relative max-w-screen min-h-screen">
       <Header />
-      <div className="w-full mx-auto px-10">
-        <div className="text-center pt-[180px] pb-[50px]">
-          <span className="text-transparent bg-gradient-to-r from-blue-600 to-pink-600 text-7xl font-bold bg-clip-text capitalize">
+      <div className="w-full px-10">
+        <div className="text-center py-[50px]">
+          <span className="text-transparent bg-gradient-to-r from-ctp-blue to-ctp-pink text-7xl font-bold bg-clip-text capitalize">
             Your Favorite Pokemon
           </span>
         </div>

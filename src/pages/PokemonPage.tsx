@@ -48,6 +48,20 @@ const PokemonPage = () => {
   const [pokemon, setPokemon] = React.useState<Pokemon>();
   const [loading, setLoading] = React.useState<boolean>(true);
   const [error, setError] = React.useState<boolean>(false);
+  const [isFavorite, setIsFavorite] = React.useState<boolean>(false);
+
+  // Check if pokemon is in favorites
+  React.useEffect(() => {
+    const favorites = localStorage.getItem("favorites");
+    if (favorites) {
+      const favoritesArr = JSON.parse(favorites);
+      if (name) {
+        if (favoritesArr.includes(name)) {
+          setIsFavorite(true);
+        }
+      }
+    }
+  }, [name]);
 
   React.useEffect(() => {
     const fetchPokemon = async () => {
@@ -74,10 +88,12 @@ const PokemonPage = () => {
       if (name) {
         favoritesArr.push(name);
         localStorage.setItem("favorites", JSON.stringify(favoritesArr));
+        setIsFavorite(true);
       }
     } else {
       if (name) {
         localStorage.setItem("favorites", JSON.stringify([name]));
+        setIsFavorite(true);
       }
     }
   };
@@ -92,14 +108,14 @@ const PokemonPage = () => {
       )}
       {error && <div className="text-center">Error...</div>}
       {!loading && !error && (
-        <div className="w-full mx-auto px-10">
+        <div className="w-full px-10">
           <div className="text-center py-[50px]">
             <span className="text-transparent bg-gradient-to-r from-ctp-blue to-ctp-pink text-7xl font-bold bg-clip-text capitalize">
               {pokemon?.name}
             </span>
           </div>
           <div className="flex items-center justify-center gap-10">
-            <div className="bg-ctp-overlay0/50 flex flex-col items-center p-5 rounded-3xl">
+            <div className="bg-gradient-to-b from-ctp-mantle to-ctp-crust flex flex-col items-center p-5 rounded-3xl">
               <div className="">
                 {pokemon && pokemon.id && (
                   <img
@@ -127,7 +143,7 @@ const PokemonPage = () => {
               </div>
             </div>
 
-            <div className="bg-ctp-overlay0/50 flex flex-col items-center p-5 rounded-3xl">
+            <div className="bg-gradient-to-b from-ctp-mantle to-ctp-crust flex flex-col items-center p-5 rounded-3xl">
               <div className="">
                 {/* evolution */}
                 {pokemon?.id && <EvolutionCard id={pokemon.id} />}
@@ -167,12 +183,22 @@ const PokemonPage = () => {
         </div>
       )}
 
-      <div
-        className="bg-gradient-to-r from-ctp-pink to-ctp-mauve px-4 py-2 text-xl rounded-xl dark:text-white text-black absolute right-5 bottom-5 hover:-translate-y-2 transition-all ease-in-out duration-300 cursor-pointer"
-        onClick={handleAddToFavorites}
-      >
-        Add to favorites 🌟
-      </div>
+      <>
+        {isFavorite ? (
+          <div
+            className="bg-gradient-to-r from-ctp-pink to-ctp-mauve px-4 py-2 text-xl rounded-xl dark:text-white text-black fixed right-5 bottom-5 hover:-translate-y-2 transition-all ease-in-out duration-300 cursor-pointer"
+          >
+            Added to favorites 🌟
+          </div>
+        ) : (
+          <div
+            className="bg-gradient-to-r from-ctp-pink to-ctp-mauve px-4 py-2 text-xl rounded-xl dark:text-white text-black fixed right-5 bottom-5 hover:-translate-y-2 transition-all ease-in-out duration-300 cursor-pointer"
+            onClick={handleAddToFavorites}
+          >
+            Add to favorites 🌟
+          </div>
+        )}
+      </>
     </div>
   );
 };

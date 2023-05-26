@@ -51,7 +51,7 @@ const HomePage = () => {
         </div>
       )}
       {!loading && !error && (
-        <div className="w-[90vw] px-10">
+        <div className="w-full px-10">
           <div className="text-center py-[50px]">
             <span className="text-transparent bg-gradient-to-r from-ctp-blue to-ctp-pink text-7xl font-bold bg-clip-text">
               PokéDex!
@@ -66,13 +66,13 @@ const HomePage = () => {
           </div>
           <div className="py-10 text-xl flex items-center gap-5">
             <button
-              className="rounded-md text-white px-4 py-2 bg-gradient-to-r from-ctp-pink to-ctp-mauve hover:from-pink-600 hover:to-blue-600 transition-all hover:ease-in-out hover:duration-300"
+              className="rounded-md text-white px-4 py-2 bg-gradient-to-r from-ctp-pink to-ctp-mauve hover:from-ctp-mauve hover:to-ctp-pink transition-all hover:ease-in-out hover:duration-300"
               onClick={handlePrevClick}
             >
               Prev
             </button>
             <button
-              className="rounded-md text-white px-4 py-2 bg-gradient-to-r from-ctp-green to-ctp-teal hover:from-secondary hover:to-primary transition-all hover:ease-in-out hover:duration-300"
+              className="rounded-md text-white px-4 py-2 bg-gradient-to-r from-ctp-green to-ctp-teal hover:from-ctp-teal hover:to-ctp-green transition-all hover:ease-in-out hover:duration-300"
               onClick={handleNextClick}
             >
               Next
