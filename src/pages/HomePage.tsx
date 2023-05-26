@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import { PokemonList } from "../types";
 import { getPokemonList } from "../api/pokemonServices";
 import PokemonCard from "../components/PokemonCard";
+import Loading from "../components/Loading";
 
 const HomePage = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -38,14 +39,21 @@ const HomePage = () => {
   };
 
   return (
-    <div className="dark:bg-black bg-white relative max-w-screen min-h-screen">
-      <Header />
-      {loading && <div className="text-center">Loading...</div>}
-      {error && <div className="text-center">Error...</div>}
+    <div>
+      {loading && (
+        <div className="w-full min-h-screen flex items-center justify-center">
+          <Loading />
+        </div>
+      )}
+      {error && (
+        <div className="w-full min-h-screen flex items-center justify-center">
+          Error...
+        </div>
+      )}
       {!loading && !error && (
-        <div className="w-full px-10">
-          <div className="text-center pt-[180px] pb-[50px]">
-            <span className="text-transparent bg-gradient-to-r from-blue-600 to-pink-600 text-7xl font-bold bg-clip-text">
+        <div className="w-[90vw] px-10">
+          <div className="text-center py-[50px]">
+            <span className="text-transparent bg-gradient-to-r from-ctp-blue to-ctp-pink text-7xl font-bold bg-clip-text">
               PokéDex!
             </span>
           </div>
@@ -58,13 +66,13 @@ const HomePage = () => {
           </div>
           <div className="py-10 text-xl flex items-center gap-5">
             <button
-              className="rounded-md dark:text-white px-4 py-2 bg-gradient-to-r from-blue-600 to-pink-600 hover:from-pink-600 hover:to-blue-600 transition-all hover:ease-in-out hover:duration-300"
+              className="rounded-md text-white px-4 py-2 bg-gradient-to-r from-ctp-pink to-ctp-mauve hover:from-pink-600 hover:to-blue-600 transition-all hover:ease-in-out hover:duration-300"
               onClick={handlePrevClick}
             >
               Prev
             </button>
             <button
-              className="rounded-md dark:text-white px-4 py-2 bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary transition-all hover:ease-in-out hover:duration-300"
+              className="rounded-md text-white px-4 py-2 bg-gradient-to-r from-ctp-green to-ctp-teal hover:from-secondary hover:to-primary transition-all hover:ease-in-out hover:duration-300"
               onClick={handleNextClick}
             >
               Next

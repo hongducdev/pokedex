@@ -54,7 +54,7 @@ const EvolutionCard = ({ id }: EvolutionProps) => {
         return (
           <>
             <Link to={`/pokemon/${e.name}`}>
-              <div className="flex items-center bg-gradient-to-r from-primary to-secondary p-1 rounded-full">
+              <div className="flex items-center bg-gradient-to-r from-ctp-pink to-ctp-lavender p-1 rounded-full">
                 <div className="bg-white rounded-full">
                   <img
                     src={apiConfig.gifUrl(e.id)}

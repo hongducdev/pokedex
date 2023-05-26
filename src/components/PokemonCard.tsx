@@ -42,8 +42,8 @@ const PokemonCard = ({ name }: PokemonCardProps) => {
             />
           </div>
           <div
-            className="flex items-center justify-between p-3 bg-gradient-to-r from-primary to-secondary rounded-b-xl
-        group-hover:from-secondary group-hover:to-primary transition-all ease-in-out duration-300
+            className="flex items-center justify-between p-3 bg-gradient-to-r from-ctp-pink to-ctp-mauve rounded-b-xl
+        group-hover:from-ctp-mauve group-hover:to-ctp-pink transition-all ease-in-out duration-300
       "
           >
             <div className="font-semibold text-lg">{pokemon?.name}</div>

@@ -1,6 +1,7 @@
 import useDarkMode from "../hooks/useDarkMode";
 import { Link, NavLink } from "react-router-dom";
 import { RiMoonClearFill, RiSunFill, RiGithubLine } from "react-icons/ri";
+import { TiStarFullOutline } from "react-icons/ti";
 
 const Header = () => {
   const [darkMode, setDarkMode] = useDarkMode();
@@ -10,38 +11,37 @@ const Header = () => {
   };
 
   return (
-    <div className="dark:bg-black max-w-[1000px] w-full mx-auto rounded-full bg-opacity-70 shadow-sdprimary absolute top-10 left-0 right-0">
-      <div className="flex justify-between items-center pl-4 pr-8 py-2">
-        <div className="">
+    <div className="fixed left-10 top-1/2 -translate-y-1/2 z-10">
+      <div className="flex justify-between items-center flex-col gap-10">
+        <div className="w-16 h-16 p-2 rounded-xl bg-ctp-overlay0/50">
           <Link to="/">
             <img
               src="/Poké_Ball_icon.svg.png"
               alt="pokemon_ball"
-              className="w-16 h-16"
+              className=""
             />
           </Link>
         </div>
 
-        <div className="flex items-center gap-6">
+        <div className="flex items-center justify-end gap-6 flex-col bg-ctp-overlay0/50 w-16 p-4 h-[50vh] rounded-xl">
           <NavLink
             to="/favorites"
             className={({ isActive }) =>
               isActive
-                ? "text-xl font-medium text-transparent bg-gradient-to-r from-blue-600 to-pink-600 bg-clip-text relative after:absolute after:h-[2px] after:w-10 after:bg-gradient-to-r after:rounded-sm after:bottom-0 after:left-0"
-                : "text-xl font-medium text-transparent bg-gradient-to-r from-blue-600 to-pink-600 bg-clip-text"
+                ? "text-3xl text-ctp-yellow hover:text-yellow-400 transition-all ease-in-out duration-300"
+                : "text-3xl text-ctp-yellow hover:text-yellow-400 transition-all ease-in-out duration-300"
             }
           >
-            Favorites
+            <TiStarFullOutline />
           </NavLink>
-          {/* darkmode button */}
           <div className="cursor-pointer" onClick={handleDarkMode}>
             {darkMode ? (
               <RiMoonClearFill className="text-white text-2xl" />
             ) : (
-              <RiSunFill className="text-yellow-500 text-2xl" />
+              <RiSunFill className="text-ctp-yellow text-2xl" />
             )}
           </div>
-          <div className="h-full w-full rounded-md bg-gradient-to-r from-primary to-secondary p-1">
+          <div className="w-10 h-10 flex items-center justify-center rounded-md bg-gradient-to-r from-ctp-pink to-ctp-mauve">
             <Link to="https://github.com/hongduccodedao/pokedex">
               <RiGithubLine className="text-white text-2xl" />
             </Link>
