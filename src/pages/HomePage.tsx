@@ -47,6 +47,8 @@ const HomePage: React.FC = () => {
       const filteredPokemon = response.data.results.filter((pokemon) =>
         pokemon.name.includes(search.toLowerCase())
       );
+      
+      filteredPokemon.length = 20;
 
       setPokemonList(filteredPokemon);
       setLoading(false);
