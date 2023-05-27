@@ -93,60 +93,60 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="w-full px-3 md:px-10">
+      <div className="text-center pt-[100px] md:py-[50px]">
+        <TextHeading text="PokéDex!" />
+      </div>
+      <div className="flex items-center justify-end gap-3 my-5">
+        <input
+          type="text"
+          className="h-10 px-4 rounded-lg bg-gradient-to-r from-ctp-mantle to-ctp-crust border-none outline-none text-ctp-rust dark:text-white md:max-w-[400px] flex-1"
+          placeholder="Search pokemon..."
+          value={search}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setSearch(e.target.value)
+          }
+          ref={inputRef}
+        />
+        <button className="bg-gradient-to-r from-ctp-pink to-ctp-mauve w-10 h-10 text-xl text-white flex items-center justify-center rounded-lg">
+          <BiSearchAlt />
+        </button>
+      </div>
       {loading && (
-        <div className="w-full h-[50vh] flex items-center justify-center">
+        <div className="flex items-center justify-center h-[300px]">
           <Loading />
         </div>
       )}
       {error && (
-        <div className="w-full h-[50vh] flex items-center justify-center">
-          Error...
+        <div className="flex items-center justify-center h-[300px]">
+          <p className="text-2xl text-ctp-rust dark:text-white">
+            Something went wrong!
+          </p>
         </div>
       )}
       {!loading && !error && (
-        <div className="w-full px-3 md:px-10">
-          <div className="text-center pt-[100px] md:py-[50px]">
-            <TextHeading text="PokéDex!" />
-          </div>
-          <div className="flex items-center justify-end gap-3 my-5">
-            <input
-              type="text"
-              className="h-10 px-4 rounded-lg bg-gradient-to-r from-ctp-mantle to-ctp-crust border-none outline-none text-ctp-rust dark:text-white md:max-w-[400px] flex-1"
-              placeholder="Search pokemon..."
-              value={search}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                setSearch(e.target.value)
-              }
-              ref={inputRef}
-            />
-            <button className="bg-gradient-to-r from-ctp-pink to-ctp-mauve w-10 h-10 text-xl text-white flex items-center justify-center rounded-lg">
-              <BiSearchAlt />
-            </button>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
-            {pokemonList.map((pokemon) => (
-              <div key={pokemon.name}>
-                <PokemonCard name={pokemon.name} />
-              </div>
-            ))}
-          </div>
-          <div className="py-10 text-xl flex items-center gap-5">
-            <button
-              className="rounded-md text-white px-4 py-2 bg-gradient-to-r from-ctp-pink to-ctp-mauve hover:from-ctp-mauve hover:to-ctp-pink transition-all hover:ease-in-out hover:duration-300"
-              onClick={handlePrevClick}
-            >
-              Prev
-            </button>
-            <button
-              className="rounded-md text-white px-4 py-2 bg-gradient-to-r from-ctp-green to-ctp-teal hover:from-ctp-teal hover:to-ctp-green transition-all hover:ease-in-out hover:duration-300"
-              onClick={handleNextClick}
-            >
-              Next
-            </button>
-          </div>
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
+          {pokemonList.map((pokemon) => (
+            <div key={pokemon.name}>
+              <PokemonCard name={pokemon.name} />
+            </div>
+          ))}
         </div>
       )}
+      <div className="py-10 text-xl flex items-center gap-5">
+        <button
+          className="rounded-md text-white px-4 py-2 bg-gradient-to-r from-ctp-pink to-ctp-mauve hover:from-ctp-mauve hover:to-ctp-pink transition-all hover:ease-in-out hover:duration-300"
+          onClick={handlePrevClick}
+        >
+          Prev
+        </button>
+        <button
+          className="rounded-md text-white px-4 py-2 bg-gradient-to-r from-ctp-green to-ctp-teal hover:from-ctp-teal hover:to-ctp-green transition-all hover:ease-in-out hover:duration-300"
+          onClick={handleNextClick}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 };
