@@ -15,6 +15,14 @@ const HomePage: React.FC = () => {
   const [pokemonList, setPokemonList] = useState<PokemonList[]>([]);
   const [search, setSearch] = useState<string>("");
 
+  const inputRef = React.useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [pokemonList]);
+
   const debouncedSearch = useCallback(
     debounce((value: string) => {
       setSearch(value);
@@ -48,7 +56,7 @@ const HomePage: React.FC = () => {
       const filteredPokemon = response.data.results.filter((pokemon) =>
         pokemon.name.includes(search.toLowerCase())
       );
-      
+
       filteredPokemon.length = 20;
 
       setPokemonList(filteredPokemon);
@@ -110,6 +118,7 @@ const HomePage: React.FC = () => {
               onChange={(e: ChangeEvent<HTMLInputElement>) =>
                 setSearch(e.target.value)
               }
+              ref={inputRef}
             />
             <button className="bg-gradient-to-r from-ctp-pink to-ctp-mauve w-10 h-10 text-xl text-white flex items-center justify-center rounded-lg">
               <BiSearchAlt />

@@ -49,7 +49,11 @@ const FavoritePage = () => {
                 <PokemonCard name={pokemon} key={pokemon} />
               ))
             ) : (
-              <div className="text-center">No favorite pokemon</div>
+              <div className="h-[50vh] w-full flex items-center justify-center">
+                <p className="bg-gradient-to-r from-ctp-pink to-ctp-mauve text-transparent bg-clip-text text-2xl">
+                  No favorite pokemon
+                </p>
+              </div>
             )}
           </div>
         </div>

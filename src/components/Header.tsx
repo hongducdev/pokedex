@@ -16,7 +16,7 @@ const Header = () => {
         <div className="w-16 h-16 p-2 rounded-xl bg-ctp-overlay0/50">
           <Link to="/">
             <img
-              src="/Poké_Ball_icon.svg.png"
+              src="/Poké_Ball_icon.png"
               alt="pokemon_ball"
               className=""
             />
