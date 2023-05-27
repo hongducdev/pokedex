@@ -49,10 +49,10 @@ const EvolutionCard = ({ id }: EvolutionProps) => {
   }, [id]);
 
   return (
-    <div className="grid grid-cols-3 gap-10">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
       {evolution?.map((e: any) => {
         return (
-          <>
+          <div key={e.id}>
             <Link to={`/pokemon/${e.name}`}>
               <div className="flex items-center bg-gradient-to-r from-ctp-pink to-ctp-lavender p-1 rounded-full">
                 <div className="bg-white rounded-full">
@@ -65,7 +65,7 @@ const EvolutionCard = ({ id }: EvolutionProps) => {
                 <p className="text-xl px-7 capitalize">{e.name}</p>
               </div>
             </Link>
-          </>
+          </div>
         );
       })}
     </div>

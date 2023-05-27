@@ -11,8 +11,8 @@ const Header = () => {
   };
 
   return (
-    <div className="fixed left-10 top-1/2 -translate-y-1/2 z-10">
-      <div className="flex justify-between items-center flex-col gap-10">
+    <div className="fixed left-1/2 md:left-14 top-5 md:top-1/2 -translate-x-1/2 md:-translate-y-1/2 z-10">
+      <div className="flex justify-between items-center md:flex-col gap-5 md:gap-10">
         <div className="w-16 h-16 p-2 rounded-xl bg-ctp-overlay0/50">
           <Link to="/">
             <img
@@ -23,7 +23,7 @@ const Header = () => {
           </Link>
         </div>
 
-        <div className="flex items-center justify-end gap-6 flex-col bg-ctp-overlay0/50 w-16 p-4 h-[50vh] rounded-xl">
+        <div className="flex items-center justify-end gap-6 md:flex-col bg-ctp-overlay0/50 md:w-16 p-4 h-16 md:h-[50vh] rounded-xl">
           <NavLink
             to="/favorites"
             className={({ isActive }) =>

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import PokemonCard from "../components/PokemonCard";
 import Loading from "../components/Loading";
+import TextHeading from "../components/TextHeading";
 
 const FavoritePage = () => {
   const [pokemonList, setPokemonList] = useState<string[]>([]);
@@ -29,11 +30,9 @@ const FavoritePage = () => {
   return (
     <div className="relative max-w-screen min-h-screen">
       <Header />
-      <div className="w-full px-10">
-        <div className="text-center py-[50px]">
-          <span className="text-transparent bg-gradient-to-r from-ctp-blue to-ctp-pink text-7xl font-bold bg-clip-text capitalize">
-            Your Favorite Pokemon
-          </span>
+      <div className="w-full px-3 md:px-10">
+        <div className="text-center pt-[100px] pb-[50px] md:py-[50px]">
+          <TextHeading text="Favorite Pokémon" />
         </div>
       </div>
       {loading && (
@@ -43,7 +42,7 @@ const FavoritePage = () => {
       )}
       {error && <div className="text-center">Error...</div>}
       {!loading && !error && (
-        <div className="w-full px-10">
+        <div className="w-full px-3 md:px-10">
           <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
             {pokemonList.length > 0 ? (
               pokemonList.map((pokemon: string) => (

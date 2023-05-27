@@ -7,6 +7,7 @@ import StatTag from "../components/StatTag";
 import EvolutionCard from "../components/EvolutionCard";
 import TypeTag from "../components/TypeTag";
 import Loading from "../components/Loading";
+import TextHeading from "../components/TextHeading";
 
 interface Pokemon {
   id: number | undefined;
@@ -84,14 +85,25 @@ const PokemonPage = () => {
   const handleAddToFavorites = () => {
     const favorites = localStorage.getItem("favorites");
     if (favorites) {
-      const favoritesArr = JSON.parse(favorites);
+      const favoritesArr: string[] = JSON.parse(favorites);
       if (name) {
-        favoritesArr.push(name);
-        localStorage.setItem("favorites", JSON.stringify(favoritesArr));
-        setIsFavorite(true);
+        if (favoritesArr.includes(name)) {
+          // Remove pokemon from favorites
+          const updatedFavorites = favoritesArr.filter(
+            (fav: string) => fav !== name
+          );
+          localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+          setIsFavorite(false);
+        } else {
+          // Add pokemon to favorites
+          favoritesArr.push(name);
+          localStorage.setItem("favorites", JSON.stringify(favoritesArr));
+          setIsFavorite(true);
+        }
       }
     } else {
       if (name) {
+        // Add pokemon to favorites
         localStorage.setItem("favorites", JSON.stringify([name]));
         setIsFavorite(true);
       }
@@ -108,13 +120,11 @@ const PokemonPage = () => {
       )}
       {error && <div className="text-center">Error...</div>}
       {!loading && !error && (
-        <div className="w-full px-10">
-          <div className="text-center py-[50px]">
-            <span className="text-transparent bg-gradient-to-r from-ctp-blue to-ctp-pink text-7xl font-bold bg-clip-text capitalize">
-              {pokemon?.name}
-            </span>
+        <div className="w-full px-3">
+          <div className=" text-center pt-[100px] pb-[30px] md:py-[50px]">
+            <TextHeading text={pokemon?.name} />
           </div>
-          <div className="flex items-center justify-center gap-10">
+          <div className="flex items-center justify-center gap-10 flex-col md:flex-row">
             <div className="bg-gradient-to-b from-ctp-mantle to-ctp-crust flex flex-col items-center p-5 rounded-3xl">
               <div className="">
                 {pokemon && pokemon.id && (
@@ -143,7 +153,7 @@ const PokemonPage = () => {
               </div>
             </div>
 
-            <div className="bg-gradient-to-b from-ctp-mantle to-ctp-crust flex flex-col items-center p-5 rounded-3xl">
+            <div className="bg-gradient-to-t md:bg-gradient-to-b from-ctp-mantle to-ctp-crust flex flex-col items-center p-10 md:p-5 rounded-3xl">
               <div className="">
                 {/* evolution */}
                 {pokemon?.id && <EvolutionCard id={pokemon.id} />}
@@ -154,7 +164,7 @@ const PokemonPage = () => {
                   pokemon.sprites.back_shiny &&
                   pokemon.sprites.front_default &&
                   pokemon.sprites.front_shiny && (
-                    <div className="flex items-center gap-4 mt-4">
+                    <div className="flex items-center gap-0 md:gap-4 mt-4 flex-col md:flex-row">
                       <img
                         src={pokemon?.sprites.back_default}
                         alt={pokemon?.name}
@@ -184,11 +194,12 @@ const PokemonPage = () => {
       )}
 
       <>
-        {isFavorite ? (
+        {localStorage.getItem("favorites")?.includes(name || "") ? (
           <div
             className="bg-gradient-to-r from-ctp-pink to-ctp-mauve px-4 py-2 text-xl rounded-xl dark:text-white text-black fixed right-5 bottom-5 hover:-translate-y-2 transition-all ease-in-out duration-300 cursor-pointer"
+            onClick={handleAddToFavorites}
           >
-            Added to favorites 🌟
+            Remove from favorites 🌟
           </div>
         ) : (
           <div

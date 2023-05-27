@@ -5,6 +5,7 @@ import PokemonCard from "../components/PokemonCard";
 import Loading from "../components/Loading";
 import { BiSearchAlt } from "react-icons/bi";
 import { debounce } from "lodash";
+import TextHeading from "../components/TextHeading";
 
 const HomePage: React.FC = () => {
   const limit = 20;
@@ -96,16 +97,14 @@ const HomePage: React.FC = () => {
         </div>
       )}
       {!loading && !error && (
-        <div className="w-full px-10">
-          <div className="text-center py-[50px]">
-            <span className="text-transparent bg-gradient-to-r from-ctp-blue to-ctp-pink text-7xl font-bold bg-clip-text">
-              PokéDex!
-            </span>
+        <div className="w-full px-3 md:px-10">
+          <div className="text-center pt-[100px] md:py-[50px]">
+            <TextHeading text="PokéDex!" />
           </div>
           <div className="flex items-center justify-end gap-3 my-5">
             <input
               type="text"
-              className="h-10 px-4 rounded-lg bg-gradient-to-r from-ctp-mantle to-ctp-crust border-none outline-none text-ctp-rust dark:text-white max-w-[400px] w-full"
+              className="h-10 px-4 rounded-lg bg-gradient-to-r from-ctp-mantle to-ctp-crust border-none outline-none text-ctp-rust dark:text-white md:max-w-[400px] flex-1"
               placeholder="Search pokemon..."
               value={search}
               onChange={(e: ChangeEvent<HTMLInputElement>) =>
