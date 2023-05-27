@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import Header from "../components/Header";
 import { useParams } from "react-router-dom";
@@ -49,7 +50,7 @@ const PokemonPage = () => {
   const [pokemon, setPokemon] = React.useState<Pokemon>();
   const [loading, setLoading] = React.useState<boolean>(true);
   const [error, setError] = React.useState<boolean>(false);
-  const [isFavorite, setIsFavorite] = React.useState<boolean>(false);
+  const [, setIsFavorite] = React.useState<boolean>(false);
 
   // Check if pokemon is in favorites
   React.useEffect(() => {
