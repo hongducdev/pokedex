@@ -40,10 +40,10 @@ const FavoritePage = () => {
           <Loading />
         </div>
       )}
-      {error && <div className="text-center">Error...</div>}
+      {error && <div className="text-center text-ctp-red">Error...</div>}
       {!loading && !error && (
         <div className="w-full px-3 md:px-10">
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {pokemonList.length > 0 ? (
               pokemonList.map((pokemon: string) => (
                 <PokemonCard name={pokemon} key={pokemon} />

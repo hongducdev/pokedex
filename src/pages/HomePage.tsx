@@ -125,7 +125,7 @@ const HomePage: React.FC = () => {
         </div>
       )}
       {!loading && !error && (
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
           {pokemonList.map((pokemon) => (
             <div key={pokemon.name}>
               <PokemonCard name={pokemon.name} />
